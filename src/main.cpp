@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 		int height = std::atoi(argv[2]);
 		std::chrono::milliseconds delay = std::chrono::milliseconds(std::atoi(argv[3]));
 		FlashMob flashMob(width, height);
-		flashMob.Run(delay);
+		flashMob.run(delay);
 	}
 	return 0;
 }

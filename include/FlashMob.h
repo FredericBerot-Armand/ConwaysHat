@@ -16,11 +16,12 @@ public:
 	FlashMob(const FlashMob& flashMob);
 	virtual ~FlashMob();
 	FlashMob& operator=(const FlashMob& flashMob);
-	int GetWidth() const;
-	int GetHeight() const;
-	HatColor& GetHat(int x, int y) const;
+	
+	int getWidth() const;
+	int getHeight() const;
+	HatColor& getHat(int x, int y) const;
 
-	void Run(std::chrono::milliseconds delay);
+	void run(std::chrono::milliseconds delay);
 
 protected:
 	int width = -1;
@@ -30,9 +31,9 @@ protected:
 
 	bool firstPrint = true;
 
-	void Reset();
-	void CreateGrid();
-	int CountNeighborsHats(int x, int y, HatColor hatColor);
-	int ComputeNextState();
-	virtual void Print();
+	void reset();
+	void createGrid();
+	int countNeighborsHats(int x, int y, HatColor hatColor);
+	int computeNextState();
+	virtual void printGrid();
 };
