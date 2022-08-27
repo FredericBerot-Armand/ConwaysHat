@@ -2,6 +2,9 @@
 
 A hat choregraphy's simulator
 
+![](https://github.com/FredericBerot-Armand/ConwaysHat/ConwayHat.gif)
+
+
 ## Required tools
 
 To run ConwaysHat, you will need :
