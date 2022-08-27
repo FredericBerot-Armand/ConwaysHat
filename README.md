@@ -1,6 +1,6 @@
 # ConwaysHat
 
-A hat choregraphy's simulator
+A jolie frenchy hat choregraphy's simulator
 
 ![](https://github.com/FredericBerot-Armand/ConwaysHat/blob/main/ConwayHat.gif)
 
