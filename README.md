@@ -7,7 +7,7 @@ A hat choregraphy's simulator
 To run ConwaysHat, you will need :
 
  - [Make](https://www.gnu.org/software/make/)
- - [g++]()
+ - [gcc](https://gcc.gnu.org/)
 
 ## Build
 
@@ -16,7 +16,7 @@ Run make to build :
 make
 ```
 
-## Usage
+## Running the apps
 
 ```bash
 ./conways-hat WIDTH HEIGHT DELAY
@@ -25,6 +25,11 @@ with
 * WIDTH The width of the grid
 * HEIGHT The height of the grid
 * DELAY The delay between 2 frame (int millisecond)
+
+Exemple :
+```bash
+./conways-hat 50 50 20
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
