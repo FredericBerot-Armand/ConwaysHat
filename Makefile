@@ -1,4 +1,4 @@
-NAME = conways-hat
+NAME = conways-hat.exe
 
 FLAGS = -Wall -Werror -Wextra -o2
 
