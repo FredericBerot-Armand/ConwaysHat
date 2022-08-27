@@ -22,7 +22,7 @@ make
 ## Running the apps
 
 ```bash
-./conways-hat WIDTH HEIGHT DELAY
+./conways-hat.exe WIDTH HEIGHT DELAY
 ```
 with
 * WIDTH The width of the grid
@@ -31,7 +31,7 @@ with
 
 Exemple :
 ```bash
-./conways-hat 50 50 20
+./conways-hat.exe 50 50 20
 ```
 
 ## Contributing
