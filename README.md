@@ -2,7 +2,7 @@
 
 A hat choregraphy's simulator
 
-![](https://github.com/FredericBerot-Armand/ConwaysHat/ConwayHat.gif)
+![](https://github.com/FredericBerot-Armand/ConwaysHat/blob/main/ConwayHat.gif)
 
 
 ## Required tools
