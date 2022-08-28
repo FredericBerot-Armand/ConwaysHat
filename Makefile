@@ -1,6 +1,6 @@
 NAME = conways-hat.exe
 
-FLAGS = -Wall -Werror -Wextra -o2
+FLAGS = -Wall -Werror -Wextra -o3
 
 CC = g++ $(FLAGS)
 
@@ -10,7 +10,7 @@ LIB =
 
 
 SRC = src/main.cpp\
-	src/FlashMob.cpp
+	src/FlashMobSimulator.cpp
 
 
 OBJ = $(SRC:src/%.cpp=obj/%.o)
