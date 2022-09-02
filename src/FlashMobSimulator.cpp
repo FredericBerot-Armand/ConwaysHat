@@ -20,7 +20,6 @@ FlashMobSimulator::FlashMobSimulator(int width, int height, std::vector<HatColor
 	}
 }
 
-
 FlashMobSimulator::FlashMobSimulator(const FlashMobSimulator& flashMobSimulator) :
 	width_(flashMobSimulator.getWidth()),
 	height_(flashMobSimulator.getHeight()),
@@ -72,10 +71,13 @@ int FlashMobSimulator::getHat(int x, int y) const
 	return grid_[y][x];
 }
 
-void FlashMobSimulator::run(int threshold, std::chrono::milliseconds delay)
+void FlashMobSimulator::run(int threshold, std::chrono::milliseconds delay, bool loop)
 {
+	int (*FlashMobSimulator::countFun)(int, int, int) = (loop ? &countNeighborsHatsOnTorus : &countNeighborsHats)
+
 	printf("\033[s");
 	printGrid();
+
 	while(computeNextState(threshold))
 	{
 		std::this_thread::sleep_for(delay);
@@ -135,7 +137,26 @@ int FlashMobSimulator::countNeighborsHats(int x, int y, int hatColor)
 	return result;
 }
 
-int FlashMobSimulator::computeNextState(int threshold)
+int FlashMobSimulator::countNeighborsHatsOnTorus(int x, int y, int hatColor)
+{
+	int prevX = (x == 1 ? width_ : x - 1);
+	int nextX = (x == width_ ? 1 : x + 1);
+	int prevY = (y == 1 ? height_ : y - 1);
+	int nextY = (y == height_ ? 1 : y + 1);
+	int result = 0;
+	result += (getHat(prevX, prevY) == hatColor ? 1 : 0);
+	result += (getHat(x, prevY) == hatColor ? 1 : 0);
+	result += (getHat(nextX, prevY) == hatColor ? 1 : 0);
+	result += (getHat(prevX, y) == hatColor ? 1 : 0);
+	result += (getHat(nextX, y) == hatColor ? 1 : 0);
+	result += (getHat(prevX, nextY) == hatColor ? 1 : 0);
+	result += (getHat(x , nextY) == hatColor ? 1 : 0);
+	result += (getHat(nextX, nextY) == hatColor ? 1 : 0);
+	return result;
+}
+
+
+int FlashMobSimulator::computeNextState(int (*FlashMobSimulator::countFun)(int, int, int), int threshold)
 {
 	int countChange = 0;
 	for (int y = 1; y < height_ + 1; y++)
@@ -143,7 +164,7 @@ int FlashMobSimulator::computeNextState(int threshold)
 		for (int x = 1; x < width_ + 1; x++)
 		{
 			int nextHat = (getHat(x, y) + 1) % colors_.size();
-			if (countNeighborsHats(x, y, nextHat) >= threshold)
+			if (countFun(x, y, nextHat) >= threshold)
 			{
 				nextState_[y][x] = nextHat;
 				countChange++;
@@ -155,7 +176,7 @@ int FlashMobSimulator::computeNextState(int threshold)
 	int** tmpSwap = grid_;
 	grid_ = nextState_;
 	nextState_ = tmpSwap;
-	return (countChange);
+	return countChange;
 }
 
 void FlashMobSimulator::printGrid()

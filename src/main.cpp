@@ -8,7 +8,7 @@
 
 int printUsage(char *progname)
 {
-	std::cout << "Usage : " << progname << " [-t THRESHOLD] [-c COLOR [COLOR]...] WIDTH HEIGHT DELAY" << std::endl
+	std::cout << "Usage : " << progname << " [-t THRESHOLD] [-l] [-c COLOR [COLOR]...] WIDTH HEIGHT DELAY" << std::endl
 			  << "with :" << std::endl
 			  << "  *  COLOR A value among black, red, green, yellow, blue, purple, cyan and white (Participants changes their hat's colors according to the list order) (default : red white blue)" << std::endl
 			  << "  *  THRESHOLD The neigthbors' threshold to change the hat's color of a participant (default : 3)" << std::endl
@@ -21,6 +21,7 @@ int printUsage(char *progname)
 int main(int argc, char** argv)
 {
 	int threshold = 3;
+	bool loop = false;
 	int argIndex = 1;
 	bool endOption = false;
 	std::vector<FlashMobSimulator::HatColor> colors;
@@ -66,6 +67,11 @@ int main(int argc, char** argv)
 				}
 			}
 		}
+		else if (currentOptoin == "-l")
+		{
+			argIndex++;
+			loop = true;
+		}
 		else if (currentOptoin == "--")
 		{
 			argIndex++;
@@ -96,7 +102,7 @@ int main(int argc, char** argv)
 	/* ************************************************* */
 
 	FlashMobSimulator fmSimulator(width, height, colors);
-	fmSimulator.run(threshold, delay);
+	fmSimulator.run(threshold, delay, loop);
 
 	return 0;
 }

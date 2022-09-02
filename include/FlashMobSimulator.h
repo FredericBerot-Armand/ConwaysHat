@@ -71,13 +71,22 @@ protected:
 	 * @param hatColor the index of the color of hat who count
 	 * @return the number of neighbors who have a @hatColor hat
 	 */
-	virtual int countNeighborsHats(int x, int y, int hatColor);
+	int countNeighborsHats(int x, int y, int hatColor);
+
+	/**
+	 * Count the neighbors who have a @hatColor hat of the participant
+	 * @param x Abscissa of the participant
+	 * @param y Ordinate of the participant
+	 * @param hatColor the index of the color of hat who count
+	 * @return the number of neighbors who have a @hatColor hat
+	 */
+	int countNeighborsHatsOnTorus(int x, int y, int hatColor)
 
 	/**
 	 * Compute the next color of each hat.
 	 * @return the number of participant who have change hat
 	 */
-	virtual int computeNextState(int threshold);
+	int computeNextState(int threshold);
 
-	virtual void printGrid();
+	void printGrid();
 };
