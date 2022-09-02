@@ -44,7 +44,7 @@ public:
 	 * Run the simulation
 	 * @param delay the delay between 2 rooster screams (in milliseconds)
 	 */
-	void run(int threshold, std::chrono::milliseconds delay);
+	void run(int threshold, std::chrono::milliseconds delay, bool torus);
 
 protected:
 	int width_ = -1;
@@ -80,7 +80,7 @@ protected:
 	 * @param hatColor the index of the color of hat who count
 	 * @return the number of neighbors who have a @hatColor hat
 	 */
-	int countNeighborsHatsOnTorus(int x, int y, int hatColor)
+	int countNeighborsHatsOnTorus(int x, int y, int hatColor);
 
 	/**
 	 * Compute the next color of each hat.
