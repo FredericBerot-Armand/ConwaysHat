@@ -86,7 +86,7 @@ protected:
 	 * Compute the next color of each hat.
 	 * @return the number of participant who have change hat
 	 */
-	int computeNextState(int threshold);
+	int computeNextState(int (*FlashMobSimulator::countFun)(int, int, int), int threshold);
 
 	void printGrid();
 };

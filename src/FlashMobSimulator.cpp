@@ -78,7 +78,7 @@ void FlashMobSimulator::run(int threshold, std::chrono::milliseconds delay, bool
 	printf("\033[s");
 	printGrid();
 
-	while(computeNextState(threshold))
+	while(computeNextState(countFun, threshold))
 	{
 		std::this_thread::sleep_for(delay);
 		printGrid();
