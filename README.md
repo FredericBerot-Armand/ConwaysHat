@@ -44,7 +44,7 @@ with
 Exemple :
 ```bash
 ./conways-hat.exe 50 50 20
-./conways-hat.exe -l 4 100 50 50
+./conways-hat.exe -t 4 100 50 50
 ./conways-hat.exe -c red blue green yellow purple cyan white -l 2 100 50 50
 ```
 
