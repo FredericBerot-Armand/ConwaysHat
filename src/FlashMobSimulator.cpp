@@ -73,8 +73,7 @@ int FlashMobSimulator::getHat(int x, int y) const
 
 void FlashMobSimulator::run(int threshold, std::chrono::milliseconds delay, bool torus)
 {
-	int (FlashMobSimulator::*countFun)(int, int, int) = (torus ? &FlashMobSimulator::countNeighborsHatsOnTorus : &FlashMobSimulator::countNeighborsHats)
-
+	int (FlashMobSimulator::*countFun)(int, int, int) = (torus ? &FlashMobSimulator::countNeighborsHatsOnTorus : &FlashMobSimulator::countNeighborsHats);
 	printf("\033[s");
 	printGrid();
 
@@ -164,7 +163,7 @@ int FlashMobSimulator::computeNextState(int (FlashMobSimulator::*countFun)(int, 
 		for (int x = 1; x < width_ + 1; x++)
 		{
 			int nextHat = (getHat(x, y) + 1) % colors_.size();
-			if (countFun(x, y, nextHat) >= threshold)
+			if (this->*countFun(x, y, nextHat) >= threshold)
 			{
 				nextState_[y][x] = nextHat;
 				countChange++;
