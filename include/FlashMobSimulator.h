@@ -77,7 +77,7 @@ protected:
 	 * Compute the next color of each hat.
 	 * @return the number of participant who have change hat
 	 */
-	virtual int computeNextState();
+	virtual int computeNextState(int threshold);
 
 	virtual void printGrid();
 };

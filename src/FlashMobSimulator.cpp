@@ -99,7 +99,7 @@ void FlashMobSimulator::reset()
 void FlashMobSimulator::createGrid()
 {
 	grid_ = new int*[height_ + 2];
-	nextState = new int*[height_ + 2];
+	nextState_ = new int*[height_ + 2];
 	for (int i = 0; i < height_ + 2; i++)
 	{
 		grid_[i] = new int[width_ + 2];
