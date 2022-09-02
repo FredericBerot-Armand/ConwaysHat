@@ -73,7 +73,7 @@ int FlashMobSimulator::getHat(int x, int y) const
 
 void FlashMobSimulator::run(int threshold, std::chrono::milliseconds delay, bool torus)
 {
-	int (*FlashMobSimulator::countFun)(int, int, int) = (torus ? &countNeighborsHatsOnTorus : &countNeighborsHats)
+	int (*FlashMobSimulator::countFun)(int, int, int) = (torus ? &FlashMobSimulator::countNeighborsHatsOnTorus : &FlashMobSimulator::countNeighborsHats)
 
 	printf("\033[s");
 	printGrid();
